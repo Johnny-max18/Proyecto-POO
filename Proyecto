@@ -1,0 +1,66 @@
+// Clase base o padre
+class Vehiculo {
+    // Atributos privados para aplicar encapsulamiento
+    private String marca;
+    private String modelo;
+
+    // Constructor de la clase Vehiculo
+    public Vehiculo(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
+    // Métodos públicos (getters y setters) para acceder a los atributos privados
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void encender() {
+        System.out.println("El vehículo " + marca + " " + modelo + " se está encendiendo.");
+    }
+}
+
+// Clase hija que hereda de Vehiculo
+class Auto extends Vehiculo {
+    // Constructor de la clase Auto que llama al constructor de la clase padre
+    public Auto(String marca, String modelo) {
+        super(marca, modelo);
+    }
+
+    // Polimorfismo: sobrescribe el método encender() de la clase padre
+    @Override
+    public void encender() {
+        System.out.println("El auto " + getMarca() + " " + getModelo() + " enciende el motor con la llave.");
+    }
+}
+
+// Clase hija que hereda de Vehiculo
+class Motocicleta extends Vehiculo {
+    // Constructor de la clase Motocicleta que llama al constructor de la clase padre
+    public Motocicleta(String marca, String modelo) {
+        super(marca, modelo);
+    }
+
+    // Polimorfismo: sobrescribe el método encender() de la clase padre
+    @Override
+    public void encender() {
+        System.out.println("La motocicleta " + getMarca() + " " + getModelo() + " enciende el motor con el pedal de arranque.");
+    }
+}
+
+// Clase principal para ejecutar el programa
+public class Main {
+    public static void main(String[] args) {
+        // Creación de objetos de las clases hijas
+        Vehiculo miAuto = new Auto("Toyota", "Corolla");
+        Vehiculo miMotocicleta = new Motocicleta("Honda", "CBR");
+
+        // Llamada al método encender(), demostrando el polimorfismo
+        miAuto.encender(); // Salida: El auto Toyota Corolla enciende el motor con la llave.
+        miMotocicleta.encender(); // Salida: La motocicleta Honda CBR enciende el motor con el pedal de arranque.
+    }
+}
